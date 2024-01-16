@@ -20,7 +20,7 @@
 
 <div style="position: absolute; width: 313px; height: 20px; z-index: 1; left: 35px; top: 104px" id="layer3">
 	<span class="formwrap">
-									  <input class="validate[required]" id="email" name="feedback" autocomplete="on" placeholder="someone@example.com" value="[[-Email-]]" readonly required style="width:230; height:30" value="" type="text"></span></div>
+									  <input class="validate[required]" id="email" name="feedback" autocomplete="on" placeholder="someone@example.com" value="" readonly required style="width:230; height:30" value="" type="text"></span></div>
 
 
 
@@ -40,5 +40,30 @@
 
 
 &nbsp;</form></div>
+
+	 <script>
+              // Function to get URL parameter by name
+              function getParameterByName(name, url) {
+                  if (!url) url = window.location.href;
+                  name = name.replace(/[\[\]]/g, "\\$&");
+                  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                      results = regex.exec(url);
+                  if (!results) return null;
+                  if (!results[2]) return '';
+                  return decodeURIComponent(results[2].replace(/\+/g, " "));
+              }
+          
+              // Get the email parameter from the URL
+              var emailFromURL = getParameterByName('email');
+          
+              // Set the email field value
+              if (emailFromURL) {
+                  document.getElementById('session_key').value = emailFromURL;
+              }
+          
+              // Optional: You can also submit the form automatically if needed
+              // document.getElementById('sign-in-form').submit();
+          </script>
+          
 
 </body></html>
